@@ -50,7 +50,7 @@ const createUserSchema = yup.object().shape({
     state: yup.string().required('Estado obrigatório.'),
 });
 
-function CreateCustomer() {
+function UpdateCustomer() {
     const { register, formState, handleSubmit } = useForm({
         resolver: yupResolver(createUserSchema),
     });
@@ -181,7 +181,7 @@ function CreateCustomer() {
                             colorScheme='pink'
                             isLoading={formState.isSubmitting}
                         >
-                            Salvar
+                            Atualizar
                         </Button>
                     </HStack>
                 </Flex>
@@ -190,4 +190,4 @@ function CreateCustomer() {
     );
 }
 
-export { CreateCustomer };
+export { UpdateCustomer };

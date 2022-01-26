@@ -7,6 +7,7 @@ import { CreateOrder } from './pages/Orders/Create';
 import { Customers } from './pages/Customers';
 import { Overview } from './pages/Overview';
 import { CreateCustomer } from './pages/Customers/Create';
+import { UpdateCustomer } from './pages/Customers/Update';
 
 const Routes = () => {
     return (
@@ -15,9 +16,9 @@ const Routes = () => {
 
             <Route path='/dashboard' element={<Dashboard />}>
                 <Route path='overview' element={<Overview />} />
-                <Route path='customers' element={<Customers />}>
-                    <Route path='create' element={<CreateCustomer />} />
-                </Route>
+                <Route path='customers' element={<Customers />} />
+                <Route path='customers/create' element={<CreateCustomer />} />
+                <Route path='customers/update' element={<UpdateCustomer />} />
                 <Route path='orders' element={<Orders />}>
                     <Route path='create' element={<CreateOrder />} />
                 </Route>

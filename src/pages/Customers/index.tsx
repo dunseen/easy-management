@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link as NavLink } from 'react-router-dom';
+import { Link as NavLink, Outlet } from 'react-router-dom';
 import { Button } from '@chakra-ui/button';
 import Icon from '@chakra-ui/icon';
 import { Box, Flex, Heading, Spinner, Text } from '@chakra-ui/react';
@@ -20,6 +20,7 @@ function Customers() {
             document: '040.626.432-51',
         },
     ];
+
     return (
         <Flex w='100%' my='6' maxW={1480} mx='auto' px='6'>
             <Box flex='1' borderRadius={8} bg='gray.800' p='8'>

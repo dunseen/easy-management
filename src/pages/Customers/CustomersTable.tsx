@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+import { Link as NavLink } from 'react-router-dom';
 import {
     Box,
     Button,
@@ -13,9 +15,9 @@ import {
     Tr,
     useBreakpointValue,
 } from '@chakra-ui/react';
-import React, { useState } from 'react';
 import { RiPencilLine } from 'react-icons/ri';
 import Pagination from '../../components/Pagination';
+import { useModal } from '../../contexts/ModalContext';
 
 interface User {
     id: string;
@@ -30,6 +32,7 @@ interface CustomersTableProps {
 }
 
 function CustomersTable({ users }: CustomersTableProps) {
+    const { onOpen } = useModal();
     const [page, setPage] = useState(1);
     const isWideVersion = useBreakpointValue({
         base: false,
@@ -78,17 +81,23 @@ function CustomersTable({ users }: CustomersTableProps) {
                                 </Td>
                             )}
                             <Td px={['4,', '4', '6']}>
-                                <Button
-                                    as='a'
-                                    size='sm'
-                                    fontSize='sm'
-                                    colorScheme='pink'
-                                    leftIcon={
-                                        <Icon as={RiPencilLine} fontSize='16' />
-                                    }
-                                >
-                                    {isWideVersion ? 'Editar' : ''}
-                                </Button>
+                                <NavLink to='/dashboard/customers/update'>
+                                    <Button
+                                        as='a'
+                                        size='sm'
+                                        fontSize='sm'
+                                        colorScheme='pink'
+                                        onClick={onOpen}
+                                        leftIcon={
+                                            <Icon
+                                                as={RiPencilLine}
+                                                fontSize='16'
+                                            />
+                                        }
+                                    >
+                                        {isWideVersion ? 'Editar' : ''}
+                                    </Button>
+                                </NavLink>
                             </Td>
                         </Tr>
                     ))}
