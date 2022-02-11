@@ -3,8 +3,8 @@ import { Stack } from '@chakra-ui/react';
 import {
     RiContactsLine,
     RiDashboardLine,
-    RiGitMergeLine,
-    RiInputMethodLine,
+    RiBuilding4Line,
+    RiArchiveLine,
 } from 'react-icons/ri';
 import { BsClipboardPlus } from 'react-icons/bs';
 
@@ -18,19 +18,19 @@ export default function SidebarNav() {
                 <NavLink icon={RiDashboardLine} href='/dashboard'>
                     Dashboard
                 </NavLink>
-                <NavLink icon={RiContactsLine} href='/clientes'>
-                    Clientes
-                </NavLink>
-                <NavLink icon={BsClipboardPlus} href='/pedidos'>
+                <NavLink icon={BsClipboardPlus} href='/dashboard/orders'>
                     Pedidos
                 </NavLink>
             </NavSection>
-            <NavSection title='AUTOMAÇÃO'>
-                <NavLink icon={RiInputMethodLine} href='/forms'>
-                    Formulários
+            <NavSection title='FORMULÁRIOS'>
+                <NavLink icon={RiContactsLine} href='/dashboard/customers'>
+                    Clientes
                 </NavLink>
-                <NavLink icon={RiGitMergeLine} href='/automation'>
-                    Autmotação
+                <NavLink icon={RiArchiveLine} href='/dashboard/products'>
+                    Produtos
+                </NavLink>
+                <NavLink icon={RiBuilding4Line} href='/dashboard/factories'>
+                    Fábricas
                 </NavLink>
             </NavSection>
         </Stack>

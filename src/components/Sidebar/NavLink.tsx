@@ -1,5 +1,5 @@
 import React, { ElementType } from 'react';
-
+import { Link } from 'react-router-dom';
 import {
     Link as ChakraLink,
     Text,
@@ -20,11 +20,13 @@ export default function NavLink({
     ...rest
 }: NavLinkProps) {
     return (
-        <ChakraLink display='flex' align='center' {...rest}>
-            <Icon as={icon} fontSize='20' />
-            <Text ml='4' fontWeight='medium'>
-                {children}
-            </Text>
-        </ChakraLink>
+        <Link to={href}>
+            <ChakraLink display='flex' align='center' {...rest}>
+                <Icon as={icon} fontSize='20' />
+                <Text ml='4' fontWeight='medium'>
+                    {children}
+                </Text>
+            </ChakraLink>
+        </Link>
     );
 }

@@ -18,20 +18,13 @@ import {
 import { RiPencilLine } from 'react-icons/ri';
 import Pagination from '../../components/Pagination';
 import { useModal } from '../../contexts/ModalContext';
+import { IFactory } from '../../interfaces/IFactory';
 
-interface User {
-    id: string;
-    name: string;
-    document: string;
-    contact: string;
-    email: string;
+interface FactoriesTableProps {
+    factories: IFactory[];
 }
 
-interface CustomersTableProps {
-    users: User[];
-}
-
-function CustomersTable({ users }: CustomersTableProps) {
+function FactoriesTable({ factories }: FactoriesTableProps) {
     const { onOpen } = useModal();
     const [page, setPage] = useState(1);
     const isWideVersion = useBreakpointValue({
@@ -48,14 +41,13 @@ function CustomersTable({ users }: CustomersTableProps) {
                             <Checkbox colorScheme='pink' />
                         </Td>
                         <Th>Nome</Th>
-                        {isWideVersion && <Th>CNPJ</Th>}
 
                         <Th w='8'></Th>
                     </Tr>
                 </Thead>
                 <Tbody>
-                    {users.map((user) => (
-                        <Tr key={user.id}>
+                    {factories.map((factory) => (
+                        <Tr key={factory.id}>
                             <Td px={['4,', '4', '6']}>
                                 <Checkbox colorScheme='pink' />
                             </Td>
@@ -67,22 +59,18 @@ function CustomersTable({ users }: CustomersTableProps) {
                                         }
                                     >
                                         <Text fontWeight='bold'>
-                                            {user.name}
+                                            {factory.name}
                                         </Text>
                                     </Link>
-                                    <Text fontSize='sm' color='gray.300'>
-                                        {user.email}
-                                    </Text>
+                                    {/* <Text fontSize='sm' color='gray.300'>
+                                        {factory.color}
+                                    </Text> */}
                                 </Box>
                             </Td>
-                            {isWideVersion && (
-                                <Td>
-                                    <Text>{user.document}</Text>
-                                </Td>
-                            )}
+
                             <Td px={['4,', '4', '6']}>
                                 <NavLink
-                                    to={`/dashboard/customers/update/${user.id}`}
+                                    to={`/dashboard/factories/update/${factory.id}`}
                                 >
                                     <Button
                                         as='a'
@@ -114,4 +102,4 @@ function CustomersTable({ users }: CustomersTableProps) {
     );
 }
 
-export { CustomersTable };
+export { FactoriesTable };

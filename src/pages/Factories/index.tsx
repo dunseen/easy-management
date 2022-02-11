@@ -1,23 +1,32 @@
 import React from 'react';
-import { Link as NavLink, Outlet } from 'react-router-dom';
+import { Link as NavLink } from 'react-router-dom';
 import { Button } from '@chakra-ui/button';
 import Icon from '@chakra-ui/icon';
 import { Box, Flex, Heading, Spinner, Text } from '@chakra-ui/react';
 import { RiAddLine } from 'react-icons/ri';
 
-import { CustomersTable } from './CustomersTable';
+import { FactoriesTable } from './FactoriesTable';
 
-function Customers() {
+function Factories() {
     const isLoading = false;
     const error = false;
 
-    const users = [
+    const factories = [
         {
             id: '1',
-            name: 'Davys lima de Sousa Junior',
-            email: 'davysjr@gmail.com',
-            contact: '(91) 992500807',
-            document: '040.626.432-51',
+            name: 'Fábrica A',
+        },
+        {
+            id: '2',
+            name: 'Fábrica B',
+        },
+        {
+            id: '3',
+            name: 'Fábrica C',
+        },
+        {
+            id: '4',
+            name: 'Fábrica D',
         },
     ];
 
@@ -26,11 +35,11 @@ function Customers() {
             <Box flex='1' borderRadius={8} bg='gray.800' p='8'>
                 <Flex mb='8' justify='space-between' align='center'>
                     <Heading size='lg' fontWeight='normal'>
-                        Clientes
+                        Fábricas
                         {/* {!isLoading && isFetching && <Spinner size="sm" ml="6" />} */}
                     </Heading>
 
-                    <NavLink to='/dashboard/customers/create'>
+                    <NavLink to='/dashboard/factories/create'>
                         <Button
                             as='a'
                             size='sm'
@@ -49,14 +58,14 @@ function Customers() {
                     </Flex>
                 ) : error ? (
                     <Flex justify='center'>
-                        <Text>Falha ao obter dados do cliente.</Text>
+                        <Text>Falha ao obter dados do produto.</Text>
                     </Flex>
                 ) : (
-                    <CustomersTable users={users} />
+                    <FactoriesTable factories={factories} />
                 )}
             </Box>
         </Flex>
     );
 }
 
-export { Customers };
+export { Factories };
