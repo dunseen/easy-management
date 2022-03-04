@@ -1,4 +1,4 @@
-import { Box, Text, Flex, Badge, Select } from '@chakra-ui/react';
+import { Box, Text, Flex, Badge } from '@chakra-ui/react';
 import React from 'react';
 
 interface OrdersCardProps {
@@ -19,17 +19,23 @@ const OrdersCard: React.FC<OrdersCardProps> = ({
     provider,
 }) => {
     return (
-        <Flex flex={'1'}>
+        <Flex flex='1'>
             <Box
                 role={'group'}
                 p={6}
-                maxW={'250px'}
                 w={'100%'}
+                maxW='290px'
                 boxShadow={'md'}
                 bg={'gray.800'}
                 rounded={'lg'}
                 pos={'relative'}
+                height='200px'
                 zIndex={1}
+                _hover={{
+                    cursor: 'pointer',
+                    boxShadow: '2xl',
+                    backgroundColor: 'gray.750',
+                }}
             >
                 <Flex
                     align={'start'}
@@ -46,22 +52,7 @@ const OrdersCard: React.FC<OrdersCardProps> = ({
                         <Text fontSize={'2xl'} as={'h4'}>
                             {code}
                         </Text>
-                        <Select
-                            size='sm'
-                            w='fit-content'
-                            focusBorderColor='pink.500'
-                            bg='gray.900'
-                            rounded={'md'}
-                            variant='filled'
-                            _hover={{
-                                bg: 'gray.900',
-                            }}
-                        >
-                            <option value='sent'>Enviado</option>
-                            <option value='pending'>Análise</option>
-                            <option value='done'>Faturado</option>
-                            <option value='cancelled'>Cancelado</option>
-                        </Select>
+                        <Badge colorScheme={'green'}>{status}</Badge>
                     </Flex>
                     <Text>{provider}</Text>
                     <Text fontSize={'sm'}>{customer}</Text>
@@ -70,7 +61,7 @@ const OrdersCard: React.FC<OrdersCardProps> = ({
                         justifyContent='space-between'
                         w='100%'
                     >
-                        <Text>{date}</Text>
+                        <Text fontSize={'sm'}>{date}</Text>
                         <Text fontSize={'lg'} fontWeight='bold'>
                             {amount}
                         </Text>

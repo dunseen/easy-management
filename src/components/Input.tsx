@@ -14,6 +14,7 @@ interface InputProps extends ChakraInputProps {
     name: string;
     label?: string;
     error?: FieldError;
+    ref?: any;
 }
 
 export function Input({ error = null, name, label, ...rest }: InputProps) {

@@ -14,6 +14,7 @@ import { UpdateProduct } from './pages/Products/Update';
 import { Factories } from './pages/Factories';
 import { CreateFactories } from './pages/Factories/Create';
 import { UpdateFactories } from './pages/Factories/Update';
+import { OrderDetails } from './pages/Orders/Details';
 
 const Routes = () => {
     return (
@@ -40,6 +41,7 @@ const Routes = () => {
                 <Route path='orders' element={<Orders />}>
                     <Route path='create' element={<CreateOrder />} />
                 </Route>
+                <Route path='orders/:id' element={<OrderDetails />} />
             </Route>
         </AppRoutes>
     );
