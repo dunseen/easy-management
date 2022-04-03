@@ -3,33 +3,23 @@ import {
     Button,
     Divider,
     Flex,
-    FormControl,
-    FormLabel,
     Heading,
     HStack,
     Icon,
-    NumberDecrementStepper,
-    NumberIncrementStepper,
-    NumberInput,
-    NumberInputField,
-    NumberInputStepper,
     Select,
     SimpleGrid,
-    Tag,
-    TagLabel,
-    TagRightIcon,
-    Text,
+    useDisclosure,
     VStack,
 } from '@chakra-ui/react';
 import React from 'react';
-import { RiPencilLine, RiDeleteBin2Line, RiAddLine } from 'react-icons/ri';
+import { RiAddLine } from 'react-icons/ri';
 import { Input } from '../../components/Input';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-
+import { AddProductModal } from './AddProductModal';
 interface AddressFormData {
     street: string;
     zipCode: string;
@@ -69,6 +59,7 @@ const createUserSchema = yup.object().shape({
 });
 
 const OrderDetails = () => {
+    const { onOpen, isOpen, onClose } = useDisclosure();
     const { register, formState, handleSubmit } = useForm({
         resolver: yupResolver(createUserSchema),
     });
@@ -111,6 +102,7 @@ const OrderDetails = () => {
                         type='button'
                         colorScheme='pink'
                         rightIcon={<Icon as={RiAddLine} fontSize='20' />}
+                        onClick={onOpen}
                     >
                         Adicionar produtos
                     </Button>
@@ -238,6 +230,7 @@ const OrderDetails = () => {
                     </HStack>
                 </Flex>
             </Box>
+            <AddProductModal isOpen={isOpen} onClose={onClose} />
         </Flex>
     );
 };
